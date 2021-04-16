@@ -20,7 +20,11 @@ module.exports = {
       },
     },
   },
-  initialState: {},
+  initialState: {
+    count: 0,
+    firstName: '',
+    birthDate: '',
+  },
   channels: {
     messenger: {
       enabled: true,
