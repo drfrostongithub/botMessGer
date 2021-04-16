@@ -1,3 +1,6 @@
+Look at this guide 
+https://chatbotsjournal.com/how-to-build-facebook-messenger-bot-using-node-js-and-bottender-20d87c9e2c77
+
 This project was bootstrapped with
 [Bottender](https://github.com/Yoctol/bottender) init script.
 
