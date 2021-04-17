@@ -27,10 +27,9 @@
    -> Then ask if you want to reveal how much until birthday (Yes and no)
    -> He/She will said goodbye
 8. run **npm run test** to check the REST API works or not (Get all and Delete)
-9. Then for check all the messages go with _npm run dev_ -> open localhost by click on what provided on console (don't forget to go for _localhost:4000/messages_ !
-   or you will just stuck in loop)
-10. You can check each email by ID or Delete it.
-11. That's it folks, remember this is not yet deployed.
+9. Then for check all the messages go with _npm run dev_ -> open localhost by click on what provided on console (don't forget to go for _localhost:4000/messages_ !)
+10. You can check each message by ID or Delete it.
+11. That's it folks ! Hope you enjoy my simple apps !
 12. If you have any question email me at business.putrarezafardani@gmail.com
 
 ## My 2 Cent About the business sense
