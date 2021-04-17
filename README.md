@@ -1,8 +1,10 @@
-## HR Recruitment Guide 
-1. Clone the code 
+## Guide to the BotMessGer 
+1. Clone the code (git clone https://github.com/drfrostongithub/botMessGer.git)
 2. Npm Install 
-3. setup .env (You will use messenger facebook to setup)
-4. Look at the guide bottom to setup page on facebook developer and get the following field 
+3. There's two way to make the code works (one by Integrating to Messenger Facebook or Test By Console) 
+4. ***Integrating to facebook **messenger**
+5. setup .env (You will use messenger facebook to setup)
+6. Look at the guide bottom to setup page on facebook developer and get the following field 
     a. MESSENGER_PAGE_ID=
     b. MESSENGER_ACCESS_TOKEN=
     c. MESSENGER_APP_ID=
@@ -10,8 +12,11 @@
     e. MESSENGER_VERIFY_TOKEN=
     *TLDR (https://chatbotsjournal.com/how-to-build-facebook-messenger-bot-using-node-js-and-bottender-20d87c9e2c77)
     Focus On the 3rd Step
-5. **or you can run locally by 'npm run bot' try to fiddle with it
-6. 
+7. ***Run locally by '*npm run bot*' ->** Testing the code for works 
+8. Then for check all the messages go with *npm run dev* -> open localhost by click on what provided on console (don't forget to go for *localhost:4000/messages*)
+9. You can check each email by ID or Delete it.
+10. That's it folks, remember this is not yet deployed. 
+11. If you have any question email me at business.putrarezafardani@gmail.com
 
 
 
