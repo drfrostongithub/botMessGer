@@ -19,7 +19,12 @@ or you will just stuck in loop)
 10. That's it folks, remember this is not yet deployed. 
 11. If you have any question email me at business.putrarezafardani@gmail.com
 
-
+## My 2 Cent About the business sense
+1. Use it as a automatic respond when some help isn't needed with Human Response (e.g: FAQ, More Download Links, Small Error)
+2. Can also be interchangeable with human response if the problems was considered complex by the machine and user need it which is will lead to 3rd point
+3. User will also give an input on how these messenger will help them in the future or present
+4. Developer will gather data on what's needed to be improved and needed to be fixed
+5. I'm using some material from the guide that I give at the top, but also the rest are from my experience as a developer
 
 
 ## Look at this guide 
