@@ -13,7 +13,14 @@
    e. MESSENGER_VERIFY_TOKEN=
    *TLDR (https://chatbotsjournal.com/how-to-build-facebook-messenger-bot-using-node-js-and-bottender-20d87c9e2c77)
    Focus On the 3rd Step
-7. ***Run locally by '*npm run bot\*' ->** Testing the code for works
+   **More TLDR**
+   -> Open Facebook console (https://developers.facebook.com/)
+   -> Click my Aps -> Create App -> Enter Your app name -> Create a Fan Page (this is the place you will chat/test the bot)
+   -> Get Messenger Access Token + Page ID in the setting Products
+   -> Get Messenger App ID + APP Secret on setting basic
+   -> For Verify Token, you can use any token e.g: "THIS_IS_STRONG_TOKEN" or use https://strongpasswordgenerator.com/ and paste all the appropiate field to the .env file
+   -> Open new terminal => use 'npm run set' to set webhook
+7. ***Run locally by 'npm run bot' ->** Testing the code for works
    -> Try to say "hi or hello" on console, the bot will respond once you said something
    -> He/she will ask your name (give your name)
    -> Then ask for birthday date (YYYY-MM-DD)
@@ -37,6 +44,11 @@
 ## Look at this guide
 
 https://chatbotsjournal.com/how-to-build-facebook-messenger-bot-using-node-js-and-bottender-20d87c9e2c77
+
+
+
+
+## Below here are Framework README, Not related directly to the step I use !!
 
 This project was bootstrapped with
 [Bottender](https://github.com/Yoctol/bottender) init script.
