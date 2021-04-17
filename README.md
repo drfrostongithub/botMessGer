@@ -13,7 +13,8 @@
     *TLDR (https://chatbotsjournal.com/how-to-build-facebook-messenger-bot-using-node-js-and-bottender-20d87c9e2c77)
     Focus On the 3rd Step
 7. ***Run locally by '*npm run bot*' ->** Testing the code for works 
-8. Then for check all the messages go with *npm run dev* -> open localhost by click on what provided on console (don't forget to go for *localhost:4000/messages*)
+8. Then for check all the messages go with *npm run dev* -> open localhost by click on what provided on console (don't forget to go for *localhost:4000/messages* ! 
+or you will just stuck in loop)
 9. You can check each email by ID or Delete it.
 10. That's it folks, remember this is not yet deployed. 
 11. If you have any question email me at business.putrarezafardani@gmail.com

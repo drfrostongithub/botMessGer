@@ -89,9 +89,8 @@ async function Reveal(context) {
       usedYear = nextYear
     }
   } else {
-    usedYear = nextYear
+    usedYear = thisYear
   }
-
 
   // Formula to get day
   let exactBirth = dayjs(context.state.birthDate).year(usedYear).add(1, 'day')

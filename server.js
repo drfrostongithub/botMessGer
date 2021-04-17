@@ -20,15 +20,16 @@ app.prepare().then(() => {
     server.use(express.json({ verify }));
     server.use(express.urlencoded({ extended: true }));
 
-    // your custom route
-    server.get('/api', (req, res) => {
-        res.json({ ok: true });
-    });
+    // // your custom route
+    // server.get('/api', (req, res) => {
+    //     res.json({ ok: true });
+    // });
 
     server.get('/', (req, res) => {
-        res.json('Main');
+        res.json('go for /messages');
     });
 
+    // View All
     server.get('/messages', (req, res) => {
         fs.readFile(`./record.json`, `utf8`, (err, data) => {
             if (err) { res.send(err) }
@@ -39,6 +40,7 @@ app.prepare().then(() => {
         })
     });
 
+    // View By ID
     server.get('/messages/:id', (req, res) => {
         fs.readFile(`./record.json`, `utf8`, (err, data) => {
             if (err) { res.send(err) }
@@ -57,6 +59,7 @@ app.prepare().then(() => {
         })
     })
 
+    // Delete By ID
     server.get('/messages/:id/delete', (req, res) => {
         let deleteId = +req.params.id
         fs.readFile(`./record.json`, `utf8`, (err, data) => {
@@ -87,6 +90,6 @@ app.prepare().then(() => {
 
     server.listen(port, err => {
         if (err) throw err;
-        console.log(`> Ready on http://localhost:${port}`);
+        console.log(`> Ready on http://localhost:${port}/messages`);
     });
 });
