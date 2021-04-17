@@ -1,17 +1,18 @@
-import dayjs from 'dayjs';
-module.exports = App
-async function App(context) {
+let dayjs = require('dayjs');
+
+module.exports = async function App(context) {
   if (context.event._rawEvent.message.text.toLowerCase() === 'no') {
     return Reset
   } else {
 
     if (context.session._state.count === 0) {
+      console.log(context.event)
       return Intro
     } else if (context.session._state.count === 1) {
       return BirthDate
     } else if (context.session._state.count === 2 && context.session._state.firstName) {
       return Decision
-    } else if (context.session._state.count === 3 
+    } else if (context.session._state.count === 3
       && context.session._state.firstName
       && context.session._state.birthDate) {
       return Reveal
@@ -36,10 +37,9 @@ async function Intro(context) {
   context.setState({
     count
   })
-  let firstRes = await context.sendText('Hi');
-  if (firstRes) {
-    await context.sendText(`What's your first name?`)
-  }
+  await context.sendText('Hi');
+  await context.sendText(`What's your first name?`)
+
 }
 
 async function BirthDate(context) {
@@ -51,14 +51,24 @@ async function BirthDate(context) {
 }
 
 async function Decision(context) {
-  await context.sendText(`so It's on ${context.event.text} ?
-      You want to know how much it will occur again?`)
+  await context.sendText(`so It's on ${context.event.text},
+      You want to know how many days till his your nextH?`)
   context.setState({
     birthDate: context.event.text,
     count: context.state.count + 1
   })
+  if (context.event.text.toLowerCase() === "no" || context.event.text.toLowerCase() === "nah") {
+    return Reset
+  }
 }
 
 async function Reveal(context) {
 
+  let today = dayjs()
+  let nextYear = dayjs(context.state.birthDate).add(1, 'year').add(1, 'day')
+  let time = today.diff(nextYear, 'month').toString()
+
+  await context.sendText(`There are ${time} days left until your next birthday`)
+
+  await Reset
 }
