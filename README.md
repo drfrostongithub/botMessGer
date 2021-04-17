@@ -6,31 +6,30 @@
 4. **\*Integrating to facebook **messenger\*\*
 5. setup .env (You will use messenger facebook to setup)
 6. Look at the guide bottom to setup page on facebook developer and get the following field
-   a. MESSENGER_PAGE_ID=
-   b. MESSENGER_ACCESS_TOKEN=
-   c. MESSENGER_APP_ID=
-   d. MESSENGER_APP_SECRET=
-   e. MESSENGER_VERIFY_TOKEN=
-   *TLDR (https://chatbotsjournal.com/how-to-build-facebook-messenger-bot-using-node-js-and-bottender-20d87c9e2c77)
-   Focus On the 3rd Step
-   **More TLDR**
+7. a. MESSENGER_PAGE_ID=
+8. b. MESSENGER_ACCESS_TOKEN=
+9. c. MESSENGER_APP_ID=
+10. d. MESSENGER_APP_SECRET=
+11. e. MESSENGER_VERIFY_TOKEN=
+12. *TLDR (https://chatbotsjournal.com/how-to-build-facebook-messenger-bot-using-node-js-and-bottender-20d87c9e2c77) **Focus On the 3rd Step**
+13. **More TLDR**
    -> Open Facebook console (https://developers.facebook.com/)
    -> Click my Aps -> Create App -> Enter Your app name -> Create a Fan Page (this is the place you will chat/test the bot)
    -> Get Messenger Access Token + Page ID in the setting Products
    -> Get Messenger App ID + APP Secret on setting basic
    -> For Verify Token, you can use any token e.g: "THIS_IS_STRONG_TOKEN" or use https://strongpasswordgenerator.com/ and paste all the appropiate field to the .env file
    -> Open new terminal => use 'npm run set' to set webhook
-7. ***Run locally by 'npm run bot' ->** Testing the code for works
+14. ***Run locally by 'npm run bot' ->** Testing the code for works
    -> Try to say "hi or hello" on console, the bot will respond once you said something
    -> He/she will ask your name (give your name)
    -> Then ask for birthday date (YYYY-MM-DD)
    -> Then ask if you want to reveal how much until birthday (Yes and no)
    -> He/She will said goodbye
-8. run **npm run test** to check the REST API works or not (Get all and Delete)
-9. Then for check all the messages go with _npm run dev_ -> open localhost by click on what provided on console (don't forget to go for _localhost:4000/messages_ !)
-10. You can check each message by ID or Delete it.
-11. That's it folks ! Hope you enjoy my simple apps !
-12. If you have any question email me at business.putrarezafardani@gmail.com
+15. run **npm run test** to check the REST API works or not (Get all and Delete)
+16. Then for check all the messages go with _npm run dev_ -> open localhost by click on what provided on console (don't forget to go for _localhost:4000/messages_ !)
+17. You can check each message by ID or Delete it.
+18. That's it folks ! Hope you enjoy my simple apps !
+19. If you have any question email me at business.putrarezafardani@gmail.com
 
 ## My 2 Cent About the business sense
 
