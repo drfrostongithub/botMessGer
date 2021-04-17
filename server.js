@@ -25,22 +25,59 @@ app.prepare().then(() => {
         res.json({ ok: true });
     });
 
-    // server.get('/', (req, res) => {
-    //     res.json('Main');
-    // });
+    server.get('/', (req, res) => {
+        res.json('Main');
+    });
 
-    server.get('/message', (req, res) => {
+    server.get('/messages', (req, res) => {
         fs.readFile(`./record.json`, `utf8`, (err, data) => {
             if (err) { res.send(err) }
             else {
                 data = JSON.parse(data)
-                res.render(`message`, { data })
+                res.render(`messages`, { data })
             }
         })
     });
 
-    server.get('/view', (req, res) => {
-        res.render('message')
+    server.get('/messages/:id', (req, res) => {
+        fs.readFile(`./record.json`, `utf8`, (err, data) => {
+            if (err) { res.send(err) }
+            else {
+                // console.log('masuk gan')
+                let id = req.params.id
+                data = JSON.parse(data)
+                let result = data.filter((el) => {
+                    if (el.id == +id) {
+                        return el
+                    }
+                })
+                data = result
+                res.render(`view`, { data })
+            }
+        })
+    })
+
+    server.get('/messages/:id/delete', (req, res) => {
+        let deleteId = +req.params.id
+        fs.readFile(`./record.json`, `utf8`, (err, data) => {
+            if (err) { res.send(err) }
+            else {
+                data = JSON.parse(data)
+                let result = data.filter(el => {
+                    if (el.id != deleteId) {
+                        return el
+                    }
+                })
+                let dataStr = JSON.stringify(result, null, 2)
+                fs.writeFile(`./record.json`, dataStr, (err) => {
+                    if (err) { res.send(err) }
+                    else {
+                        res.redirect(`/messages`)
+                    }
+                })
+
+            }
+        })
     });
 
     // route for webhook request

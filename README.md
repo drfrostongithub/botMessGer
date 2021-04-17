@@ -8,7 +8,10 @@
     c. MESSENGER_APP_ID=
     d. MESSENGER_APP_SECRET=
     e. MESSENGER_VERIFY_TOKEN=
-5. 
+    *TLDR (https://chatbotsjournal.com/how-to-build-facebook-messenger-bot-using-node-js-and-bottender-20d87c9e2c77)
+    Focus On the 3rd Step
+5. **or you can run locally by 'npm run bot' try to fiddle with it
+6. 
 
 
 

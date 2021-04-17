@@ -13,8 +13,7 @@
         <table border="1">
             <tr>
                 <td>ID</td>
-                <td>First Name</td>
-                <td>Birth Date</td>
+
                 <td>Message</td>
             </tr>
             <% data.forEach ((element)=> {%>
@@ -22,17 +21,13 @@
                     <td>
                         <%= element.id %>
                     </td>
-                    <td>
-                        <%= element.firstName %>
-                    </td>
-                    <td>
-                        <%= element.birthDate %>
-                    </td>
+
                     <td>
                         <%= element.msg %>
                     </td>
                     <td>
-                        <a href="/message/<%= element.id %>/view">View</a>
+                        <a href="/messages/<%= element.id %>/delete">Delete</a>
+                        <a href="/messages/<%= element.id %>">View</a>
                     </td>
                 </tr>
                 <%})%>
