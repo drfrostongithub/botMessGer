@@ -6,12 +6,12 @@ const app = bottender({
 });
 
 const port = Number(process.env.PORT) || 4040;
+const server = express();
 
 // the request handler of the bottender app
 const handle = app.getRequestHandler();
 
 app.prepare().then(() => {
-    const server = express();
 
     const verify = (req, _, buf) => {
         req.rawBody = buf.toString();
@@ -60,7 +60,7 @@ app.prepare().then(() => {
     })
 
     // Delete By ID
-    server.get('/messages/:id/delete', (req, res) => {
+    server.delete('/messages/:id/delete', (req, res) => {
         let deleteId = +req.params.id
         fs.readFile(`./record.json`, `utf8`, (err, data) => {
             if (err) { res.send(err) }
@@ -75,6 +75,7 @@ app.prepare().then(() => {
                 fs.writeFile(`./record.json`, dataStr, (err) => {
                     if (err) { res.send(err) }
                     else {
+                        // res.status(200)
                         res.redirect(`/messages`)
                     }
                 })
@@ -93,3 +94,6 @@ app.prepare().then(() => {
         console.log(`> Ready on http://localhost:${port}/messages`);
     });
 });
+
+// uncomment this for test
+module.exports = server

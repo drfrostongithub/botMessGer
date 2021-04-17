@@ -6,7 +6,7 @@
     "dev": "nodemon server.js",
     "lint": "eslint . ",
     "start": "node server.js",
-    "test": "jest",
+    "test": "jest --runInBand --verbose --detectOpenHandles --forceExit",
     "botstart": "bottender start",
     "bot": "bottender dev",
     "set": "npx bottender messenger webhook set"
@@ -27,5 +27,8 @@
     "ignore": [
       "record.json"
     ]
+  },
+  "devDependencies": {
+    "supertest": "^6.1.3"
   }
 }
