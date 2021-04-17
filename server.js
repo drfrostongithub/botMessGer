@@ -1,6 +1,6 @@
 const express = require('express');
 const { bottender } = require('bottender');
-
+const fs = require('fs')
 const app = bottender({
     dev: process.env.NODE_ENV !== 'production',
 });
@@ -16,8 +16,9 @@ app.prepare().then(() => {
     const verify = (req, _, buf) => {
         req.rawBody = buf.toString();
     };
+    server.set(`view engine`, 'ejs')
     server.use(express.json({ verify }));
-    server.use(express.urlencoded({ extended: false, verify }));
+    server.use(express.urlencoded({ extended: true }));
 
     // your custom route
     server.get('/api', (req, res) => {
@@ -29,11 +30,17 @@ app.prepare().then(() => {
     // });
 
     server.get('/message', (req, res) => {
-        res.json('Hello World');
+        fs.readFile(`./record.json`, `utf8`, (err, data) => {
+            if (err) { res.send(err) }
+            else {
+                data = JSON.parse(data)
+                res.render(`message`, { data })
+            }
+        })
     });
 
     server.get('/view', (req, res) => {
-        res.json('View');
+        res.render('message')
     });
 
     // route for webhook request

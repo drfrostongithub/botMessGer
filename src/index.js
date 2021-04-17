@@ -1,4 +1,5 @@
 let dayjs = require('dayjs');
+let fs = require('fs')
 
 module.exports = async function App(context) {
   if (context.event._rawEvent.message.text.toLowerCase() === 'no') {
@@ -6,7 +7,6 @@ module.exports = async function App(context) {
   } else {
 
     if (context.session._state.count === 0) {
-      console.log(context.event)
       return Intro
     } else if (context.session._state.count === 1) {
       return BirthDate
@@ -29,46 +29,105 @@ async function Reset(context) {
     count: 0
   })
   let wave = '👋'
+  await context.sendChatAction('typing');
   await context.sendText(`Goodbye ${wave}`)
 }
 
 async function Intro(context) {
   const count = context.state.count + 1;
   context.setState({
-    count
+    count: count,
+    msg: context.event.text
   })
   await context.sendText('Hi');
+  await context.sendChatAction('typing');
   await context.sendText(`What's your first name?`)
 
 }
 
 async function BirthDate(context) {
-  await context.sendText(`Hello ${context.event.text}, when your birthday ?`)
+  await context.sendChatAction('typing');
+  await context.sendText(`Hello ${context.event.text}, when your birthday ?
+  (Use YYYY-MM-DD)`)
+
+  let msg = 
+
   context.setState({
     firstName: context.event.text,
+    msg: msg,
     count: context.state.count + 1
   })
 }
 
 async function Decision(context) {
+  await context.sendChatAction('typing');
   await context.sendText(`so It's on ${context.event.text},
-      You want to know how many days till his your nextH?`)
+      You want to know how many days till your next?
+      (Yes or no)`)
   context.setState({
     birthDate: context.event.text,
     count: context.state.count + 1
   })
-  if (context.event.text.toLowerCase() === "no" || context.event.text.toLowerCase() === "nah") {
+  if (context.event.text.toLowerCase() === "no"
+    || context.event.text.toLowerCase() === "nah") {
     return Reset
   }
 }
 
 async function Reveal(context) {
+  await context.sendChatAction('typing');
 
-  let today = dayjs()
-  let nextYear = dayjs(context.state.birthDate).add(1, 'year').add(1, 'day')
-  let time = today.diff(nextYear, 'month').toString()
+  const today = dayjs()
+  let thisYear = dayjs().format('YYYY')
+  let nextYear = dayjs(today).add(1, 'year').format('YYYY')
+
+  let monthBirth = dayjs(context.state.birthDate).format('MM') // Month Birth
+  let monthNow = dayjs(today).format('MM') // Month now
+
+  let dayBirth = dayjs(context.state.birthDate).format('DD') // Day Birth
+  let dayNow = dayjs(today).format('DD') // Day Now
+
+  // For year used, if it pass will use next year, if not use this year
+  let usedYear = ''
+  if (monthBirth <= monthNow) {
+    if (dayBirth > dayNow) {
+      usedYear = thisYear
+    }
+    else {
+      usedYear = nextYear
+    }
+  } else {
+    usedYear = nextYear
+  }
+
+
+  // Formula to get day
+  let exactBirth = dayjs(context.state.birthDate).year(usedYear).add(1, 'day')
+  let time = exactBirth.diff(today, 'day').toString()
 
   await context.sendText(`There are ${time} days left until your next birthday`)
-
+  console.log(context.state)
   await Reset
+}
+
+async function Record(context) {
+  let state = context.state
+  fs.readFile(`./record.json`, `utf8`, (err, data) => {
+    if (err) { res.send(err) }
+    else {
+      data = JSON.parse(data)
+      let newId = data[data.length - 1].id + 1
+      if (data.length > 0) {
+        state.id = newId
+      }
+      data.push(state)
+      let dataStr = JSON.stringify(data, null, 2)
+      fs.writeFile(`./record.json`, dataStr, (err) => {
+        if (err) { res.send(err) }
+        else {
+          // res.redirect(`/students`)
+        }
+      })
+    }
+  })
 }

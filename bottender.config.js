@@ -24,6 +24,7 @@ module.exports = {
     count: 0,
     firstName: '',
     birthDate: '',
+    msg:''
   },
   channels: {
     messenger: {

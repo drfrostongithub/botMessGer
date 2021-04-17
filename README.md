@@ -1,4 +1,19 @@
-Look at this guide 
+## HR Recruitment Guide 
+1. Clone the code 
+2. Npm Install 
+3. setup .env (You will use messenger facebook to setup)
+4. Look at the guide bottom to setup page on facebook developer and get the following field 
+    a. MESSENGER_PAGE_ID=
+    b. MESSENGER_ACCESS_TOKEN=
+    c. MESSENGER_APP_ID=
+    d. MESSENGER_APP_SECRET=
+    e. MESSENGER_VERIFY_TOKEN=
+5. 
+
+
+
+
+## Look at this guide 
 https://chatbotsjournal.com/how-to-build-facebook-messenger-bot-using-node-js-and-bottender-20d87c9e2c77
 
 This project was bootstrapped with
