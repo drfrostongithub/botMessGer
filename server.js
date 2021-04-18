@@ -96,4 +96,4 @@ app.prepare().then(() => {
 });
 
 // uncomment this for test
-module.exports = server
+// module.exports = server
